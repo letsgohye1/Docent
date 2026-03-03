@@ -1,0 +1,14 @@
+{
+  "starry_night": {
+    "title": "별이 빛나는 밤 (The Starry Night)",
+    "artist": "빈센트 반 고흐 (Vincent van Gogh)",
+    "year": 1889,
+    "description": "생-레미의 요양원에서 본 밤하늘을 그린 작품으로, 소용돌이치는 구름과 빛나는 별들이 작가의 격정적인 내면 세계를 보여줍니다."
+  },
+  "sunflowers": {
+    "title": "해바라기 (Sunflowers)",
+    "artist": "빈센트 반 고흐 (Vincent van Gogh)",
+    "year": 1888,
+    "description": "아를에서 고갱과의 공동 생활을 기대하며 그린 작품으로, 노란색의 강렬한 생동감과 태양의 에너지를 상징합니다."
+  }
+}

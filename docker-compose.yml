@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  # -----------------------------------------------
+  # Ollama: LLM Backend (Gemma2:2b)
+  # -----------------------------------------------
+  ollama:
+    image: ollama/ollama:latest
+    container_name: docent-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # -----------------------------------------------
+  # AI Docent Server: Flask + Whisper + XTTS v2
+  # -----------------------------------------------
+  docent-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docent-server
+    ports:
+      - "6000:6000"
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    volumes:
+      # [REQUIRED] Place your docent_voice.wav in the same folder as docker-compose.yml
+      # and uncomment the line below:
+      - ./docent_voice.wav:/app/docent_voice.wav:ro
+      # TTS cache persistence (speeds up repeated responses)
+      - tts_cache:/app/tts_cache
+    depends_on:
+      ollama:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+  tts_cache:

@@ -1,0 +1,41 @@
+# Unreal Engine project files (not needed for Python server)
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+Content/
+Source/
+.vs/
+*.sln
+*.uproject
+*.htm
+Config/
+Backup/
+
+# Python environments
+.venv/
+venv_*/
+__pycache__/
+*.pyc
+*.pyo
+
+# Audio files (docent_voice.wav is mounted via volume)
+*.wav
+*.mp3
+
+# TTS cache (mounted via volume)
+tts_cache/
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Docs
+README.md
+TECHNICAL_DOC_EN.md
+*.md
+
+# Scripts
+*.bat
+fix_audio.py
